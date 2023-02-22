@@ -6,7 +6,7 @@
 /*   By: tgernez <tgernez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 10:04:17 by tgernez           #+#    #+#             */
-/*   Updated: 2023/02/22 13:45:04 by tgernez          ###   ########.fr       */
+/*   Updated: 2023/02/22 17:13:08 by tgernez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	aux_atoi_def(const char *str, unsigned long *nb, int i)
 int	atoi_def(const char *str, unsigned int *val)
 {
 	unsigned long	nb;
-	int		i;
+	int				i;
 
 	nb = 0;
 	i = 0;

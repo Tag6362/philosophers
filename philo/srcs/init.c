@@ -6,14 +6,52 @@
 /*   By: tgernez <tgernez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:10:27 by tgernez           #+#    #+#             */
-/*   Updated: 2023/02/22 16:14:04 by tgernez          ###   ########.fr       */
+/*   Updated: 2023/02/22 18:18:31 by tgernez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int init(int ac, char **av, t_vars *vars)
+
+static t_philo	*new_philo(int nb, t_vars *vars)
 {
+	t_philo		*philo;
+	pthread_t	thread;
+
+	philo = malloc(sizeof(t_philo));
+	if (!philo)
+		return (NULL);
+	thread = 0;
+	philo->thread = thread;
+	philo->nb = nb;
+	philo->ttl = vars->ttd;
+	philo->forks = 1;
+	return (philo);
+}
+
+int	create_philos(t_vars *vars)
+{
+	unsigned int	i;
+
+	i = 0;
+	vars->philosophers = malloc(sizeof(t_philo *) * (vars->nb_philo + 1));
+	if (!vars->philosophers)
+		return (1);
+	(vars->philosophers)[vars->nb_philo] = NULL;
+	while (i < vars->nb_philo)
+	{
+		(vars->philosophers)[i] = new_philo(i + 1, vars);
+		if (!((vars->philosophers)[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	init(int ac, char **av, t_vars *vars)
+{
+	struct timeval	tv;
+
 	if (ac < 5 || ac > 6)
 		return (1);
 	if (atoi_def(av[1], &(vars->nb_philo)))
@@ -29,36 +67,10 @@ int init(int ac, char **av, t_vars *vars)
 		if (atoi_def(av[5], &(vars->ttf)))
 			return (1);
 	}
-	vars->philosophers = NULL;
-	return (0);
-}
-
-static t_philo	*new_philo(int nb)
-{
-	t_philo	*philo;
-	
-
-	philo = malloc(sizeof(t_philo));
-	if (!philo)
-		return (NULL);
-	philo->thread =
-
-}
-
-int create_philo(t_vars *vars)
-{
-	int	i;
-
-	i = 0;
-	vars->philosophers = malloc(sizeof(t_philo *) * (vars->nb_philo + 1));
-	if (!vars->philosophers)
+	if (create_philos(vars))
 		return (1);
-	(vars->philosophers)[vars->nb_philo] = NULL;
-	while (i < vars->nb_philo)
-	{
-		(vars->philosophers)[i] = new_philo(i + 1);
-		if (!((vars->philosophers)[i]))
-			return (1);
-		i++;
-	}
+	if (gettimeofday(&tv, NULL))
+		return (1);
+	vars->start_time = tv.tv_usec;
+	return (0);
 }

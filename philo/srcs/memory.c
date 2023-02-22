@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   memory.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgernez <tgernez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 12:47:08 by tgernez           #+#    #+#             */
-/*   Updated: 2023/02/22 17:48:32 by tgernez          ###   ########.fr       */
+/*   Created: 2023/02/22 16:20:09 by tgernez           #+#    #+#             */
+/*   Updated: 2023/02/22 17:13:38 by tgernez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	main(int ac, char **av)
+static void	free_philos(t_philo **philosophers)
 {
-	(void)ac;
-	(void)av;
-	test_01();
-	test_02();
-	test_03();
-	test_04();
-	return (EXIT_SUCCESS);
-}
-/*
-	t_vars	vars;
+	int	i;
 
-	if (init(ac, av, &vars))
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
-*/
+	i = 0;
+	while (philosophers[i])
+	{
+		free(philosophers[i]);
+		philosophers[i] = NULL;
+		i++;
+	}
+	free(philosophers);
+	philosophers = NULL;
+}
+
+void	memory_cleaning(t_vars *vars)
+{
+	if (vars->philosophers)
+		free_philos(vars->philosophers);
+}

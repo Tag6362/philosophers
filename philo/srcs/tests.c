@@ -6,7 +6,7 @@
 /*   By: tgernez <tgernez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:27:30 by tgernez           #+#    #+#             */
-/*   Updated: 2023/02/22 15:34:28 by tgernez          ###   ########.fr       */
+/*   Updated: 2023/02/22 18:23:30 by tgernez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,13 +106,13 @@ int	test_04(void)
 	int		i;
 
 	printf("=====Test 04=====\n");
-	printf("Testing Creating One Philo with %s5 800 200 200 7%s entry...", YEL, RES);
+	printf("Testing Printing Eating Action with %s5 800 200 200 7%s entry...", YEL, RES);
 	passed = 0;
 	ac = 6;
 	i = 0;
 	av = ft_split("philosophers 5 800 200 200 7", ' ');
 	passed = init(ac, av, &vars) == 0;
-	
+	print_action(*(vars.philosophers), EATING, &vars);
 	ft_free_all(av);
 	return (success(passed));
 }

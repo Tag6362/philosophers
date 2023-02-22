@@ -6,7 +6,7 @@
 #    By: tgernez <tgernez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 12:46:27 by tgernez           #+#    #+#              #
-#    Updated: 2023/02/22 15:24:30 by tgernez          ###   ########.fr        #
+#    Updated: 2023/02/22 16:47:10 by tgernez          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ SRCS 			=	$(addsuffix ${FTSRCS},	\
 					$(addprefix ${DIRSRCS},	\
 					main		\
 					atoi_def	\
+					time		\
 					init		\
+					memory		\
 					tests		\
 					))
 INCLUDES		= -Iincludes
