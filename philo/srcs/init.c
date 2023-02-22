@@ -6,7 +6,7 @@
 /*   By: tgernez <tgernez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:10:27 by tgernez           #+#    #+#             */
-/*   Updated: 2023/02/22 15:36:01 by tgernez          ###   ########.fr       */
+/*   Updated: 2023/02/22 16:14:04 by tgernez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,20 @@ int init(int ac, char **av, t_vars *vars)
 		if (atoi_def(av[5], &(vars->ttf)))
 			return (1);
 	}
+	vars->philosophers = NULL;
 	return (0);
+}
+
+static t_philo	*new_philo(int nb)
+{
+	t_philo	*philo;
+	
+
+	philo = malloc(sizeof(t_philo));
+	if (!philo)
+		return (NULL);
+	philo->thread =
+
 }
 
 int create_philo(t_vars *vars)
@@ -37,9 +50,15 @@ int create_philo(t_vars *vars)
 	int	i;
 
 	i = 0;
+	vars->philosophers = malloc(sizeof(t_philo *) * (vars->nb_philo + 1));
+	if (!vars->philosophers)
+		return (1);
+	(vars->philosophers)[vars->nb_philo] = NULL;
 	while (i < vars->nb_philo)
 	{
-		
+		(vars->philosophers)[i] = new_philo(i + 1);
+		if (!((vars->philosophers)[i]))
+			return (1);
 		i++;
 	}
 }

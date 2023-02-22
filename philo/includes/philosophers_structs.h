@@ -6,7 +6,7 @@
 /*   By: tgernez <tgernez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:07:11 by tgernez           #+#    #+#             */
-/*   Updated: 2023/02/22 15:47:53 by tgernez          ###   ########.fr       */
+/*   Updated: 2023/02/22 16:06:50 by tgernez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct		s_vars	{
 	unsigned int	tte;
 	unsigned int	tts;
 	unsigned int	ttf;
-	t_philo			*philosophers;
+	t_philo			**philosophers;
 }					t_vars;
 
 #endif
