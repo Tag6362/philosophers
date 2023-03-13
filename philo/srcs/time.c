@@ -6,7 +6,7 @@
 /*   By: tgernez <tgernez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:34:09 by tgernez           #+#    #+#             */
-/*   Updated: 2023/02/22 18:24:36 by tgernez          ###   ########.fr       */
+/*   Updated: 2023/03/13 15:29:27 by tgernez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int print_action(t_philo *philo, int action, t_vars *vars)
 	else if (action == EATING)
 		printf("[%llu] %d is eating\n", time, philo->nb);
 	else if (action == SLEEPING)
-		printf("[%llu] %d is eating\n", time, philo->nb);
+		printf("[%llu] %d is sleeping\n", time, philo->nb);
 	else if (action == THINKING)
-		printf("[%llu] %d is eating\n", time, philo->nb);
+		printf("[%llu] %d is thinking\n", time, philo->nb);
 	else if (action == DIED)
-		printf("[%llu] %d is eating\n", time, philo->nb);
+		printf("[%llu] %d died\n", time, philo->nb);
 	return (0);
 }
 
